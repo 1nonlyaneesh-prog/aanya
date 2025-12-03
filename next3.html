@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I'm Sorry Aanya 💛</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        margin:0;
+        background:#fff8c7;
+        font-family:'Kalam', cursive;
+        overflow-x:hidden;
+    }
+
+    /* Falling petals */
+    .petal{
+        position:fixed;
+        top:-50px;
+        color:#ff4d88;
+        font-size:25px;
+        animation:fall 6s linear infinite;
+        opacity:0.8;
+        pointer-events:none;
+        z-index:1;
+    }
+    @keyframes fall {
+        0%{transform:translateY(0) rotate(0deg);}
+        100%{transform:translateY(120vh) rotate(360deg);}
+    }
+
+    .apology-animation{
+        font-family:'Pacifico', cursive;
+        font-size:38px;
+        text-align:center;
+        margin-top:35px;
+        color:#e09b00;
+        opacity:0;
+        animation:fadeIn 2.8s ease-in-out forwards;
+    }
+    @keyframes fadeIn{
+        0%{opacity:0; transform:scale(0.7);}
+        100%{opacity:1; transform:scale(1);}
+    }
+
+    .typewriter{
+        text-align:center;
+        margin-top:10px;
+        font-family:'Pacifico', cursive;
+        font-size:32px;
+        color:#d18c00;
+        white-space:nowrap;
+        overflow:hidden;
+        border-right:3px solid #d18c00;
+        width:0;
+        margin-left:auto;
+        margin-right:auto;
+        animation:typing 4s steps(30,end) forwards, blink 0.8s infinite;
+    }
+    @keyframes typing { from { width:0 } to { width:260px } }
+    @keyframes blink { 50% {border-color:transparent} }
+
+    .glow-name{
+        text-align:center;
+        font-family:'Pacifico', cursive;
+        font-size:34px;
+        color:#e6a300;
+        margin-top:15px;
+        animation:glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow{
+        from { text-shadow:0 0 8px #ffe08a; }
+        to { text-shadow:0 0 20px #ffcc33; }
+    }
+
+    /* Envelope */
+    .envelope-container{
+        margin:45px auto;
+        width:180px;
+        height:120px;
+        position:relative;
+        cursor:pointer;
+        animation:float 3s ease-in-out infinite;
+        z-index:2;
+    }
+    @keyframes float{
+        0%{transform:translateY(0);}
+        50%{transform:translateY(-12px);}
+        100%{transform:translateY(0);}
+    }
+
+    .envelope{
+        width:100%;
+        height:100%;
+        background:#ffddb3;
+        border:2px solid #d6a15c;
+        border-radius:8px;
+        position:relative;
+        overflow:hidden;
+        box-shadow:0 4px 12px rgba(0,0,0,0.2);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    /* Envelope flap */
+    .envelope::before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:60%;
+        background:#ffc88f;
+        clip-path:polygon(0 0, 100% 0, 50% 100%);
+        transform-origin:top;
+        transition:transform 0.7s ease;
+        z-index:3;
+    }
+
+    .open .envelope::before{
+        transform:rotateX(180deg);
+    }
+
+    /* Floating heart inside envelope */
+    .heart{
+        font-size:40px;
+        color:#ff4d88;
+        opacity:0;
+        position:absolute;
+        animation:heartFloat 1s forwards;
+        pointer-events:none;
+    }
+    @keyframes heartFloat{
+        0% { transform:translateY(20px) scale(0.5); opacity:0; }
+        50% { transform:translateY(-10px) scale(1.2); opacity:1; }
+        100% { transform:translateY(-30px) scale(1); opacity:1; }
+    }
+
+    /* Hidden letter */
+    #letter{
+        display:none;
+        margin:20px auto;
+        padding:25px;
+        max-width:650px;
+        background:#fffde7;
+        border:2px dashed #d4a017;
+        border-radius:12px;
+        font-size:20px;
+        color:#5c3d00;
+        line-height:1.8;
+        box-shadow:0 0 20px rgba(0,0,0,0.18);
+        animation:letterOpen 1.2s ease-out forwards;
+    }
+
+    @keyframes letterOpen{
+        from{transform:translateY(40px); opacity:0;}
+        to{transform:translateY(0); opacity:1;}
+    }
+
+    .signature{
+        margin-top:25px;
+        font-family:'Pacifico', cursive;
+        font-size:32px;
+        color:#c79000;
+        text-align:right;
+        padding-right:20px;
+        animation:glow 2s infinite alternate;
+    }
+</style>
+</head>
+
+<body>
+
+<script>
+function petals(){
+    setInterval(()=>{
+        const p=document.createElement("div");
+        p.className="petal";
+        p.innerHTML="🌸";
+        p.style.left=Math.random()*100+"vw";
+        p.style.fontSize=(20+Math.random()*15)+"px";
+        p.style.animationDuration=(5+Math.random()*4)+"s";
+        document.body.appendChild(p);
+        setTimeout(()=>p.remove(),9000);
+    },400);
+}
+petals();
+</script>
+
+<div class="apology-animation">I'm truly sorry, Aanya 💛</div>
+<div class="typewriter">I love you Aanya</div>
+<div class="glow-name">My Aanya 💛</div>
+
+<!-- Envelope -->
+<div class="envelope-container" onclick="openEnvelope()">
+    <div class="envelope" id="envelope">
+        <div class="heart" id="heart">💖</div>
+    </div>
+</div>
+
+<!-- Love letter -->
+<div id="letter">
+    Dear Aanya,<br><br>
+     lovee 😔💛,<br>
+I’m really really sorry… I didn’t mean to say anything like that 😢💔.<br>
+I was just in a bad mood and feeling tense 😞, that’s why I got upset with you 😔💖.<br><br>
+
+Please don’t take it too seriously 🙏✨, and don’t overthink it 💛.<br>
+I just suddenly got upset, that’s all 😓.<br>
+I feel really bad for making you feel this way 😢💛.<br><br>
+
+I promise I’ll be more careful with my words next time 🫶💖.<br>
+I really hope you forgive me, lovee 🙏💛❤.<br>
+Very, very sorry 😔💛💕<br><br>
+
+…and I just want you to know, lovee 💛💖,<br>
+that I love you soooo much 🥰❤.<br>
+You mean the world to me 🌎💛,<br>
+and I can’t imagine my days without you 😘💖.<br><br>
+
+Every little thing about you makes me fall for you even more 😍💛.<br>
+You’re my happiness, my heart, and my everything 💕💛.<br>
+I just want to hold you close and make you smile every single day 🫶💖
+
+    <div class="signature">– Arnab 💛</div>
+</div>
+
+<script>
+function openEnvelope(){
+    const container = document.querySelector(".envelope-container");
+    const heart = document.getElementById("heart");
+    container.classList.add("open");
+    heart.style.opacity = "1";
+    setTimeout(()=>{ 
+        document.getElementById("letter").style.display = "block"; 
+    }, 700);
+}
+</script>
+
+<!-- Music -->
+<audio id="bgm" src="aankhe.mp3"></audio>
+<script>
+document.addEventListener("click", ()=>{
+    document.getElementById("bgm").play().catch(()=>{});
+}, {once:true});
+</script>
+
+</body>
+</html>
